@@ -17,11 +17,11 @@ class ApiAuthController extends Controller
         try {
             $http = new \GuzzleHttp\Client;
 
-            $response = $http->post('http://localhost/chatApp/public/oauth/token', [
+            $response = $http->post('http://localhost/appointo-multivendor/public/oauth/token', [
                 'form_params' => [
                     'grant_type' => 'password',
                     'client_id' => '2',
-                    'client_secret' => 'LX8hOrGXXcIf1GTUUuX4uc2S2pzsdlMQenTtXu1H',
+                    'client_secret' => '0mlQpdnB86QbSnEak8MkweUjkUvxuZjGBeo7o1go',
                     'username' => $request->email,
                     'password' => $request->password,
                     'scope' => '*',
@@ -35,6 +35,7 @@ class ApiAuthController extends Controller
             } else if ($e->getCode() === 401) {
                 return response()->json('Your credentials are incorrect. Please try again', $e->getCode());
             }
+            return $e;
             return response()->json('Something went wrong on the server.', $e->getCode());
         }
     }

@@ -9,10 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Cashier\Billable;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait, Notifiable;
+    use LaratrustUserTrait, Notifiable,HasApiTokens;
+
 
     protected static function boot()
     {
