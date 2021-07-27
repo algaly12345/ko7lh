@@ -214,13 +214,8 @@ class BackendController extends Controller
 
             $services = $services->paginate(10);
 
-
-
-            //$view = view('front.filtered_services', compact('services'))->render()
-            //;
-            return response()->json([$services->count(), 'service_total' => $services->total()]);
-
-          //  return Reply::dataOnly(['view' => $view, 'service_count' => $services->count(), 'service_total' => $services->total()]);
+            $view = view('front.filtered_services', compact('services'))->render();
+            return Reply::dataOnly(['view' => $view, 'service_count' => $services->count(), 'service_total' => $services->total()]);
 
         } /* end of ajax */
 
@@ -240,7 +235,9 @@ class BackendController extends Controller
             $q->withoutGlobalScope('company');
         }])
             ->get();
-        return response()->json($this->categories);
+
+        return response()->json($this->$categories);
+
        // return view('front.all_services', compact('categories', 'category_id', 'company_id'));
     }
 

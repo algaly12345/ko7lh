@@ -22,6 +22,8 @@ Route::group(['middleware' => ['api'], 'namespace' => 'Api'], function () {
     Route::get('get-main-services', 'BackendController@index');
     Route::get('get-all-categories', 'BackendController@getCategories');
     Route::get('get-service-by-slug', 'BackendController@vendorPage');
+    Route::get('get-service-by-cate', 'BackendController@AllServices');
+
 
 
     //Users
